@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GalaxyX - Courses</title>
+  <link rel="stylesheet" href="../css/courses.css" />
+  <link rel="icon" href="../img/pls2.png">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">GALAXYX</div>
+    <nav>
+      <a href="../html/index.html" target="_blank">Home</a>
+      <a href="../html/trips.html" target="_blank">Trips</a>
+      <a href="../html/store.html" target="_blank">Store</a>
+      <a href="../html/vr-experience.html" target="_blank">VR</a>
+      <a href="../html/courses.html" target="_blank">Courses</a>
+      <a href="../html/cart.html">Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <!-- Courses Section -->
+  <section class="courses-section">
+    <h1>Our Courses</h1>
+    <div class="courses-container">
+      
+      <!-- Course 1 -->
+      <div class="course-item">
+        <img src="../img/Space Exploration 101.jpg" alt="Space Exploration">
+        <div class="course-info">
+          <h2>Space Exploration 101</h2>
+          <p>Learn the basics of space travel, astronomy, and more.</p>
+          <span>$300</span>
+        </div>
+        <button onclick='addToCart({ name: "Space Exploration 101", price: 300, image: "Space Exploration 101.jpg" })' class="btn">Add to Cart</button>
+      </div>
+
+      <!-- Course 2 -->
+      <div class="course-item">
+        <img src="../img/Advanced Astrophysics.jpg" alt="Advanced Astrophysics">
+        <div class="course-info">
+          <h2>Advanced Astrophysics</h2>
+          <p>Deep dive into the wonders of the universe with advanced astrophysics.</p>
+          <span>$450</span>
+        </div>
+        <button onclick='addToCart({ name: "Advanced Astrophysics", price: 450, image: "Advanced Astrophysics.jpg" })' class="btn">Add to Cart</button>
+      </div>
+
+      <!-- Course 3 -->
+      <div class="course-item">
+        <img src="../img/Rocket Science Basics.jpeg" alt="Rocket Science">
+        <div class="course-info">
+          <h2>Rocket Science Basics</h2>
+          <p>Understand the fundamentals of rocket engineering and space mechanics.</p>
+          <span>$400</span>
+        </div>
+        <button onclick='addToCart({ name: "Rocket Science Basics", price: 400, image: "Rocket Science Basics.jpeg" })' class="btn">Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 GalaxyX. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JS to handle cart -->
+  <script src="../js/cart.js"></script>
+</body>
+</html>

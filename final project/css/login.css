@@ -1,0 +1,99 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #2e2e2e;
+    background-image: url('../img/space5.jpg');
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* header */
+.header {
+    width: 100%;
+    background-color: #160c8890;
+    padding: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: #2200ff 0px 0px 15px;
+}
+
+.header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.header nav a:hover {
+    color: #2200ff;
+}
+
+/* login form */
+.login-section {
+    background-color: #1e055159;
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    backdrop-filter: blur(10px);
+    box-shadow: #2200ff 0px 0px 15px;
+}
+
+.login-section h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.login-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-section label {
+    margin: 10px 0 5px;
+    font-size: 16px;
+}
+
+.login-section input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #006aff;
+    border-radius: 5px;
+    background-color: #003aa7;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    background-color: #2200ff65;
+}
+
+.login-section button {
+    padding: 12px;
+    background-color: #1900ffbb;
+    color: #111111;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-section button:hover {
+    background-color: #5000e5b5;
+    box-shadow: #2200ff 0px 0px 15px;
+}
+
+/* footer */
+.footer {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+    font-size: 14px;
+    color: #2a59f5;
+}

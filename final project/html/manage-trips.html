@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Trips - Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/manage-trips.css">
+    <link rel="icon" href="../img/pls2.png">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">GalaxyX</div>
+        <nav>
+            <a href="admin-dashboard.html">Dashboard</a>
+            <a href="manage-users.html">Manage Users</a>
+            <a href="manage-trips.html" class="active">Manage Trips</a>
+            <a href="manage-products.html">Manage Products</a>
+            <a href="manage-courses.html">Manage Courses</a>
+        </nav>
+    </header>
+
+    <section class="dashboard-section">
+        <h1>Manage Space Trips</h1>
+
+        <button class="add-trip-btn">Add New Trip</button>
+
+        <table class="trips-table">
+            <thead>
+                <tr>
+                    <th>Trip Name</th>
+                    <th>Destination</th>
+                    <th>Price</th>
+                    <th>Duration</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example Trip -->
+                <tr>
+                    <td>Moon Tour</td>
+                    <td>Moon</td>
+                    <td>$1000</td>
+                    <td>3 Days</td>
+                    <td>
+                        <button class="btn edit-btn">Edit</button>
+                        <button class="btn delete-btn">Delete</button>
+                    </td>
+                </tr>
+                <!-- Add more trips here -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- example for Adding Trip -->
+    <div class="modal" id="add-trip-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Space Trip</h2>
+            <form class="modal-form">
+                <label for="trip-name">Trip Name</label>
+                <input type="text" id="trip-name" required>
+
+                <label for="destination">Destination</label>
+                <input type="text" id="destination" required>
+
+                <label for="price">Price</label>
+                <input type="number" id="price" required>
+
+                <label for="duration">Duration</label>
+                <input type="text" id="duration" required>
+
+                <button type="submit">Add Trip</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 GalaxyX - All Rights Reserved</p>
+    </footer>
+
+    <script>
+        var modal = document.getElementById("add-trip-modal");
+        var addTripBtn = document.querySelector(".add-trip-btn");
+        var closeBtn = document.querySelector(".close");
+
+        addTripBtn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>

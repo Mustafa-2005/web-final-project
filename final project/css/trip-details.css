@@ -1,0 +1,169 @@
+body {
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #1a1a1a;
+    background-image: url('../img/trip4.jpg');
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+header {
+    background: linear-gradient( #3b1f7299, #6c52f18d);
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    justify-content: space-between;
+    box-shadow: 0 4px 15px #6c52f1 ;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+header .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffb600;
+}
+
+header nav {
+    margin-top: 10px;
+}
+
+header nav a {
+    margin: 0 15px;
+    font-size: 1.1rem;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #ffb600;
+    text-shadow: 0 0 10px #fff;
+}
+
+/* Trip Details Section */
+.trip-details-section {
+    padding: 40px 20px;
+}
+
+.trip-details-section h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #ffb600;
+    margin-bottom: 30px;
+}
+
+.trip-details-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.trip-images {
+    flex: 1;
+}
+
+.trip-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgb(0, 0, 0);
+}
+
+.trip-images img:hover {
+    box-shadow: 0 4px 50px #6c52f1;
+    border: 3px solid #ffb600;
+    border-radius: 70px;
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    filter: brightness(1.5);
+    -webkit-filter: brightness(1.5);
+}
+
+.trip-info {
+    flex: 1;
+    max-width: 600px;
+}
+
+.trip-info h2 {
+    font-size: 2rem;
+    color: #6c52f18d;
+    margin-bottom: 20px;
+}
+
+.trip-info p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #554ed6;
+    margin-bottom: 20px;
+}
+
+.trip-info h3 {
+    font-size: 1.5rem;
+    color: #ffb600;
+    margin-top: 20px;
+}
+
+.trip-info ul {
+    padding-left: 20px;
+}
+
+.trip-info ul li {
+    font-size: 1rem;
+    color: #ccc;
+    margin: 10px 0;
+}
+
+/* Additional Info Section */
+.additional-info {
+    margin-top: 40px;
+    background: #1111117b;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0px 10px #6c52f1;
+    backdrop-filter: blur(4px);
+    border: 2px solid gold;
+}
+
+.additional-info h2 {
+    font-size: 1.8rem;
+    color: #ffb600;
+    margin-bottom: 20px;
+}
+
+.additional-info p {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+/* Footer */
+footer {
+        background: #6c52f169;
+        margin: 0;
+        padding: 0;
+        padding: 1px;
+        text-align: center;
+        margin-top: 20px;
+        backdrop-filter: blur(3px);
+        box-shadow: 0 0px 15px #6c52f1;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+}
+
+footer p {
+    color: goldenrod;
+    font-size: 1rem;
+}

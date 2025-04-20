@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #2e2e2e;
+    background-image: url('../img/space7.jpg');
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* header */
+.header {
+    width: 100%;
+    background-color: #11111191;
+    padding: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgb(80, 246, 255);
+}
+
+.header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header nav a {
+    color: #6cc0cd;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.header nav a:hover {
+    color: #00eeff;
+    text-shadow: #00eeff 0px 0px 15px;
+    transition: color 0.2s ease;
+}
+
+/* log form */
+.signup-section {
+    background-color: #33333371;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgb(80, 246, 255);
+    width: 100%;
+    max-width: 400px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    left: -10px;
+}
+
+.signup-section h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.signup-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-section label {
+    margin: 10px 0 5px;
+    font-size: 16px;
+}
+
+.signup-section input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    background-color: #5dfffa41;
+}
+
+.signup-section button {
+    padding: 12px;
+    background-color: #00eeff;
+    color: #111;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.signup-section button:hover {
+    background-color: #00eeff;
+}
+
+/* footer */
+.footer {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+    font-size: 14px;
+    color: #00aeff;
+}

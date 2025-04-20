@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GalaxyX - Space Store</title>
+  <link rel="stylesheet" href="../css/store.css" />
+  <link rel="icon" href="../img/pls4.png">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">GalaxyX</div>
+    <nav>
+      <a href="../html/index.html">Home</a>
+      <a href="../html/trips.html">Trips</a>
+      <a href="../html/store.html">Store</a>
+      <a href="../html/vr-experience.html">VR</a>
+      <a href="../html/courses.html">Courses</a>
+      <a href="../html/cart.html">Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <section class="store-section">
+    <h1>Space Store</h1>
+    <div class="product-cards">
+      <div class="product-card">
+        <img src="../img/Space Suit Pro.jpg" alt="Space Suit">
+        <h2>Space Suit Pro</h2>
+        <p>Advanced suit for zero-gravity conditions with thermal shield.</p>
+        <span>Price: $15,000</span>
+        <button onclick='addToCart({ name: "Space Suit Pro", price: 15000, image: "Space Suit Pro.jpg" })'>Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="../img/Zero-G Snacks.jpg" alt="Space Snacks">
+        <h2>Zero-G Snacks</h2>
+        <p>Delicious freeze-dried space food in different flavors.</p>
+        <span>Price: $120</span>
+        <button onclick='addToCart({ name: "Zero-G Snacks", price: 120, image: "Zero-G Snacks.jpg" })'>Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="../img/Meteorite Fragment.jpg" alt="Meteorite">
+        <h2>Meteorite Fragment</h2>
+        <p>Authentic meteorite piece from outer space, certified.</p>
+        <span>Price: $9,999</span>
+        <button onclick='addToCart({ name: "Meteorite Fragment", price: 9999, image: "Meteorite Fragment.jpg" })'>Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="../img/Galaxy Poster Set.jpg" alt="Poster">
+        <h2>Galaxy Poster Set</h2>
+        <p>3 high-quality posters of galaxies, nebulae, and planets.</p>
+        <span>Price: $50</span>
+        <button onclick='addToCart({ name: "Galaxy Poster Set", price: 50, image: "Galaxy Poster Set.jpg" })'>Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="../img/Moon Dust Vial.jpg" alt="Moon Dust">
+        <h2>Moon Dust Vial</h2>
+        <p>Special edition moon dust sample for collectors.</p>
+        <span>Price: $2,500</span>
+        <button onclick='addToCart({ name: "Moon Dust Vial", price: 2500, image: "Moon Dust Vial.jpg" })'>Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="../img/Alien Plush Toy.jpg" alt="Alien Toy">
+        <h2>Alien Plush Toy</h2>
+        <p>Cute and cuddly alien plush with glowing eyes.</p>
+        <span>Price: $25</span>
+        <button onclick='addToCart({ name: "Alien Plush Toy", price: 25, image: "Alien Plush Toy.jpg" })'>Add toCart</button>
+      </div>
+      <div class="product-card">
+        <img src="../img/Explorer Helmet.jpg" alt="Helmet">
+        <h2>Explorer Helmet</h2>
+        <p>Replica of astronaut helmet with voice modulation feature.</p>
+        <span>Price: $1,200</span>
+        <button onclick='addToCart({ name: "Explorer Helmet", price: 1200, image: "Explorer Helmet.jpg" })'>Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="../img/VR Galaxy Tour.jpg" alt="VR Galaxy">
+        <h2>VR Galaxy Tour</h2>
+        <p>Experience the Milky Way in VR with 360° immersion pack.</p>
+        <span>Price: $350</span>
+        <button onclick='addToCart({ name: "VR Galaxy Tour", price: 350, image: "VR Galaxy Tour.jpg" })'>Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="../img/Alien Artifact Replica.jpg" alt="Artifact">
+        <h2>Alien Artifact Replica</h2>
+        <p>Inspired by ancient space myths. A mystery in your hands.</p>
+        <span>Price: $650</span>
+        <button onclick='addToCart({ name: "Alien Artifact Replica", price: 650, image: "Alien Artifact Replica.jpg" })'>Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 GalaxyX. All Rights Reserved.</p>
+  </footer>
+
+  <script src="../js/cart.js"></script>
+</body>
+</html>

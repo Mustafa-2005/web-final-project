@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    background-image: url('../img//dash1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* header */
+.header {
+    background-color: rgba(0, 0, 50, 0.628);
+    padding: 5px;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #3f3f7f;
+    box-shadow: 0 0 10px #00ffff;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.header .logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: #00ffff;
+}
+
+nav a {
+    margin: 0 12px;
+    color: #00ffff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #00ddff;
+    text-shadow: 0 0 10px #ececec;
+}
+
+/* control panel section */
+.dashboard-section {
+    padding: 40px;
+    text-align: center;
+}
+
+.dashboard-section h1 {
+    font-size: 36px;
+    margin-bottom: 25px;
+    color: #4d4de0;
+}
+
+/* dashboard panels */
+.dashboard-panels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.panel {
+    background-color: rgba(0, 0, 50, 0.59);
+    padding: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    transition: 0.3s ease;
+    box-shadow: 0 0 15px #00ffff;
+    border: 3px solid #00ffff;
+    backdrop-filter: blur(3px);  
+}
+
+.panel h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.panel p {
+    font-size: 16px;
+}
+
+.panel:hover
+ {
+    background-color: rgba(0, 0, 80, 0.944);
+    box-shadow: 0 0 20px #263479;
+    transform: scale(1.05);
+    transition: 0.3s ease;
+    color: #00ffff;
+    text-shadow: 0 0 10px #ececec;
+    border: 3px solid #00ddff;
+    backdrop-filter: blur(10px);
+    border-radius: 35px;
+}
+
+/* footer */
+.footer {
+    color: #ccc;
+    background-color: rgba(0, 0, 50, 0.633); 
+    width: 100%;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 10px #00ffff; 
+    border-radius: 10px;
+    margin: 0;
+    padding: 0;
+    position:absolute;
+    display: flex;
+    bottom: 0;  
+    left: 0;
+    right: 0;
+    justify-content: center;
+}
+
+.footer:hover {
+    background-color: rgba(0, 0, 80, 0.667);
+    box-shadow: 0 0 20px #3e5eff;
+    transition: 0.3s ;
+    color: #00ffff;
+    text-shadow: 0 0 10px #ececec;
+    backdrop-filter: blur(10px);
+}

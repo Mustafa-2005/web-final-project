@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GalaxyX - Admin Dashboard</title>
+  <link rel="stylesheet" href="../css/manage-users.css" />
+  <link rel="icon" href="../img/pls3.png" />
+</head>
+<body>
+
+  <!-- Header -->
+   <header class="header">
+        <div class="logo">GalaxyX</div>
+        <nav>
+            <a href="admin-dashboard.html">Dashboard</a>
+            <a href="manage-users.html" class="active">Manage Users</a>
+            <a href="manage-trips.html">Manage Trips</a>
+            <a href="manage-products.html" >Manage Products</a>
+            <a href="manage-courses.html">Manage Courses</a>
+        </nav>
+    </header>
+
+  <!-- Dashboard Section -->
+  <section class="dashboard-section">
+    <h1>Welcome, [Admin Name]</h1>
+
+    <!-- Add User Button -->
+    <button class="btn add-user-btn" id="addUserBtn">Add User</button>
+
+    <!-- Users List -->
+    <h2>Users List</h2>
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example User -->
+        <tr>
+          <td>Ahmed Ali</td>
+          <td>ahmed@example.com</td>
+          <td>User</td>
+          <td>
+            <button class="btn edit-btn">Edit</button>
+            <button class="btn delete-btn">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Modal for Add User -->
+    <div id="addUserModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeAddUserModal">&times;</span>
+        <h2>Add New User</h2>
+        <form action="add-user.php" method="POST" class="modal-form">
+          <label for="username">Name:</label>
+          <input type="text" id="username" name="username" required>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+
+          <label for="role">Role:</label>
+          <select id="role" name="role" required>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
+
+          <button type="submit" class="btn">Add User</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 GalaxyX. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Get modal element
+    const addUserModal = document.getElementById('addUserModal');
+    const addUserBtn = document.getElementById('addUserBtn');
+    const closeAddUserModal = document.getElementById('closeAddUserModal');
+
+    // Open modal when button is clicked
+    addUserBtn.onclick = function() {
+        addUserModal.style.display = "block";
+    }
+
+    // Close modal when 'X' is clicked
+    closeAddUserModal.onclick = function() {
+        addUserModal.style.display = "none";
+    }
+
+    // Close modal if clicked outside of the modal content
+    window.onclick = function(event) {
+        if (event.target === addUserModal) {
+            addUserModal.style.display = "none";
+        }
+    }
+  </script>
+
+</body>
+</html>

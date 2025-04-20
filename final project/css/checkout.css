@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background:  #1c1c3c;
+    background-image: url('../img/Advanced\ Astrophysics.jpg');
+    background-size: cover;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+/* header */
+.header {
+    background-color: rgba(0, 0, 0, 0.47);
+    padding: 2px;
+    display: flex;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 15px #00d9ffbd;
+}
+
+.header .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #00d8ff;
+}
+
+.header nav a {
+    color: #5555ff ;
+    text-decoration: none;
+    margin-left: 15px;
+    transition: color 0.3s ease;
+}
+
+.header nav a:hover {
+    color: #00d8ff;
+    text-shadow: 0 0 20px #00d9ff;
+    transform: scale(1.1);
+}
+
+/* checkout section */
+.checkout-section {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.192);
+    border-radius: 12px;
+    box-shadow: 0 0 20px #00d9ff86;
+}
+
+.checkout-section h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #00d8ff;
+}
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout-form label {
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: #00d8ff;
+    font-weight: bold;
+}
+
+.checkout-form input,
+.checkout-form textarea,
+.checkout-form select {
+    margin-bottom: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #1e1e3fbf;
+}
+
+.checkout-form input:focus,
+.checkout-form textarea:focus,
+.checkout-form select:focus {
+    outline: 2px solid #00d8ff;
+    background-color: #070743;
+    color: #00d8ff;
+}
+
+/* buy button */
+.btn {
+    background-color: #00d8ff;
+    color: #000;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #1e1e3f;
+    color: #00d8ff;
+    box-shadow: 0 0 20px #00d9ffcb;
+    transform: scale(1.05);
+}
+
+/* footer */
+.footer {
+    text-align: center;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.192);
+    color: #aaa;
+    margin-top: 40px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    z-index: 1000;
+    box-shadow:  0 0 20px #00d9ff86;
+}
+
+.footer:hover {
+    color: #00d8ff;
+    box-shadow: 0 0 20px #00d9ff;
+    transition: 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.727);
+}

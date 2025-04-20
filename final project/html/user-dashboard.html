@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GalaxyX - User Dashboard</title>
+  <link rel="stylesheet" href="../css/user-dashboard.css" />
+  <link rel="icon" href="../img/pls7.png">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">GALAXYX</div>
+    <nav>
+      <a href="after-login.html">Home</a>
+      <a href="trips.html">Trips</a>
+      <a href="store.html">Store</a>
+      <a href="cart.html">Cart</a>
+      <a href="login.html">Logout</a>
+    </nav>
+  </header>
+
+  <!-- User Info Section -->
+  <section class="dashboard-section">
+    <h1>Welcome, [User Name]</h1>
+
+    <!-- Display user information -->
+    <div class="user-info">
+      <p><strong>Full Name:</strong> John Doe</p>
+      <p><strong>Email:</strong> johndoe@example.com</p>
+      <p><strong>Address:</strong> 123 Space Street, Mars City</p>
+      <p><strong>Preferred Payment:</strong> Credit Card</p>
+    </div>
+
+    <!-- Edit User Info Form -->
+    <h2>Update Your Information</h2>
+    <form action="" method="POST" class="update-form">
+      <label for="full-name">Full Name</label>
+      <input type="text" id="full-name" name="full-name" value="John Doe" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" value="johndoe@example.com" required />
+
+      <label for="address">Shipping Address</label>
+      <textarea id="address" name="address" rows="3" required>123 Space Street, Mars City</textarea>
+
+      <label for="payment-method">Preferred Payment</label>
+      <select id="payment-method" name="payment-method" required>
+        <option value="card" selected>Credit Card</option>
+        <option value="paypal">PayPal</option>
+        <option value="crypto">Cryptocurrency</option>
+      </select>
+
+      <button type="submit" class="btn" onclick="updateUserInfo()">Update Information</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 GalaxyX. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function updateUserInfo() {
+      alert("User information updated successfully!");
+      window.location.href = "user-dashboard.html";
+    }
+  </script>
+
+</body>
+</html>

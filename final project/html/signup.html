@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GalaxyX - Sign Up</title>
+  <link rel="stylesheet" href="../css/signup.css" />
+  <link rel="icon" href="../img/pls1.png">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">GALAXYX</div>
+    <nav>
+      <a href="../html/index.html">Home</a>
+      <a href="../html/trips.html">Trips</a>
+      <a href="../html/store.html">Store</a>
+      <a href="../html/vr-experience.html">VR</a>
+      <a href="../html/courses.html">Courses</a>
+      <a href="../html/login.html">Login</a>
+    </nav>
+  </header>
+
+  <section class="signup-section">
+    <h1>Sign Up</h1>
+    <form id="signupForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required />
+
+      <button type="submit" onclick="signup()">Sign Up</button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 GalaxyX. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function signup() {
+      // هنا بنفترض أن التسجيل تم بنجاح ونوجهه لصفحة تسجيل الدخول
+      window.location.href = "../html/login.html";  // بعد التسجيل يروح لصفحة تسجيل الدخول
+    };
+  </script>
+  <script src="../js/signup.js"></script>
+  
+</body>
+</html>

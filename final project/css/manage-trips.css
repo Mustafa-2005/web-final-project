@@ -1,0 +1,246 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0f0f2f;
+    color: #fff;
+    background-image: url('../img/dash17.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* header */
+.header {
+        background-color: rgba(0, 0, 50, 0.628);
+        padding: 5px;
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid #3f3f7f;
+        box-shadow: 0 0 10px #00ffff;
+        z-index: 1000;
+        backdrop-filter: blur(5px);
+}
+
+.header .logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: #00ffff;
+}
+
+nav a {
+        color: #fff;
+        margin-left: 20px;
+        text-decoration: none;
+        transition: color 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+/* control panel section */
+.dashboard-section {
+    padding: 40px;
+    text-align: center;
+}
+
+.dashboard-section h1 {
+    font-size: 36px;
+    margin-bottom: 25px;
+    color: #00bcd4;
+}
+
+/* add trip button */
+.add-trip-btn {
+    background-color: #00bcd4;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 30px;
+    transition: 0.3s ease;
+}
+
+.add-trip-btn:hover {
+        background-color: #1ae8ff;
+        box-shadow: 0 0 20px #6cd9d9;
+        transform: scale(1.05);
+        transition: 0.3s ease;
+        color: #009ce9;
+        text-shadow: 0 0 10px #00ffff;
+        font-weight: bold;
+}
+
+/* trips table */
+.trips-table {
+        width: 100%;
+        max-width: 1000px;
+        margin: auto;
+        border-collapse: collapse;
+        background-color: rgba(0, 0, 50, 0.417);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 10px #00ffff;
+        backdrop-filter: blur(3px);
+}
+
+.trips-table th,
+.trips-table td {
+    padding: 15px;
+    text-align: left;
+}
+
+.trips-table th {
+        background-color: rgba(0, 0, 50, 0.417);
+        color: #00ffff;
+        font-size: 16px;
+        font-weight: bold;
+        text-shadow: 0 0 10px #00ffff;
+        backdrop-filter: blur(3px);
+}
+
+.trips-table tr:hover {
+        background-color: rgba(36, 47, 169, 0.62);
+}
+
+/* edit and delete buttons */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    margin: 0 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.edit-btn {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.edit-btn:hover {
+    background-color: #43a047;
+    box-shadow: 0 0 8px #00ff90;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.delete-btn:hover {
+    background-color: #e53935;
+    box-shadow: 0 0 8px #ff4d4d;
+}
+
+/* modal */
+/*! model (مخفي هيظهر عن طريق جافا) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #1f1f3d;
+    margin: 10% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 400px;
+    border-radius: 12px;
+    color: #fff;
+}
+
+.modal-content h2 {
+    color: #00ffff;
+    margin-bottom: 20px;
+}
+
+.modal-form label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.modal-form input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 8px;
+        background-color: #3f3f7f;
+        color: #3e5eff;
+        outline: none;
+}
+
+.modal-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #00bcd4;
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.modal-form button:hover {
+    background-color: #0088ff;
+    box-shadow: 0 0 10px #00ffff;
+}
+
+.close {
+    color: #00ffff;
+    float: right;
+    font-size: 26px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #6939ed;
+}
+
+/* footer */
+.footer {
+    color: #ccc;
+    background-color: rgba(0, 0, 50, 0.7);
+    width: 100%;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 10px #00ffff;
+    border-radius: 10px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+}
+
+.footer:hover {
+    background-color: rgba(0, 0, 80, 0.667);
+    box-shadow: 0 0 20px #3e5eff;
+    transition: 0.3s;
+    color: #00ffff;
+    text-shadow: 0 0 10px #ececec;
+    backdrop-filter: blur(10px);
+}

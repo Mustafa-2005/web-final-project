@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GalaxyX - Space Trips</title>
+  <link rel="stylesheet" href="../css/trips.css" />
+  <link rel="icon" href="../img/pls6.png">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">GALAXYX</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="trips.html">Trips</a>
+      <a href="store.html">Store</a>
+      <a href="vr-experience.html">VR</a>
+      <a href="courses.html">Courses</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <!-- Trips Section -->
+  <section class="trips-section">
+    <h1>Available Space Trips</h1>
+    <div class="trip-cards">
+
+      <!-- Moon Tour -->
+      <div class="trip-card">
+        <img src="../img/cm-09.jpg" alt="Moon">
+        <h2>Moon Tour</h2>
+        <p>3-Day trip around the moon. A once-in-a-lifetime experience.</p>
+        <span>Duration: 3 Days</span>
+        <span>Price: $25,000</span>
+        <a href="../html/moon-tour.html" class="btn">View Details</a>
+        <button onclick='addToCart({ name: "Moon Tour", price: 25000, image: "cm-09.jpg " })'>Add to Cart</button>
+      </div>
+
+      <!-- Mars Adventure -->
+      <div class="trip-card">
+        <img src="../img/cm-11.jpg" alt="Mars">
+        <h2>Mars Adventure</h2>
+        <p>Explore the red planet in a 7-day mission with expert guidance.</p>
+        <span>Duration: 7 Days</span>
+        <span>Price: $120,000</span>
+        <a href="../html/mars-adventure.html" class="btn">View Details</a>
+        <button onclick='addToCart({ name: "Mars Adventure", price: 120000, image: "cm-11.jpg" })'>Add to Cart</button>
+      </div>
+
+      <!-- ISS Orbit Tour -->
+      <div class="trip-card">
+        <img src="../img/cm-12.jpg" alt="ISS">
+        <h2>ISS Orbit Tour</h2>
+        <p>Live on the International Space Station for 2 nights.</p>
+        <span>Duration: 2 Days</span>
+        <span>Price: $80,000</span>
+        <a href="../html/iss-orbit-tour.html" class="btn">View Details</a>
+        <button onclick='addToCart({ name: "ISS Orbit Tour", price: 80000, image: "cm-12.jpg" })'>Add to Cart</button>
+      </div>
+
+      <!-- Jupiter Exploration -->
+      <div class="trip-card">
+        <img src="../img/cm-13.jpg" alt="Jupiter">
+        <h2>Jupiter Exploration</h2>
+        <p>10-day journey to explore Jupiter and its moons.</p>
+        <span>Duration: 10 Days</span>
+        <span>Price: $250,000</span>
+        <a href="../html/jupiter-exploration.html" class="btn">View Details</a>
+        <button onclick='addToCart({ name: "Jupiter Exploration", price: 250000, image: "cm-13.jpg" })'>Add to Cart</button>
+      </div>
+
+      <!-- Saturn Voyage -->
+      <div class="trip-card">
+        <img src="../img/download (14).png" alt="Saturn">
+        <h2>Saturn Voyage</h2>
+        <p>Fly by Saturn and its stunning rings in this unforgettable trip.</p>
+        <span>Duration: 5 Days</span>
+        <span>Price: $175,000</span>
+        <a href="../html/saturn-voyage.html" class="btn">View Details</a>
+        <button onclick='addToCart({ name: "Saturn Voyage", price: 175000, image: "download (14).png" })'>Add to Cart</button>
+      </div>
+
+      <!-- Andromeda Expedition -->
+      <div class="trip-card">
+        <img src="../img/Andromeda.jpeg" alt="Andromeda">
+        <h2>Andromeda Expedition</h2>
+        <p>Journey through the Andromeda galaxy with our experienced astronauts.</p>
+        <span>Duration: 30 Days</span>
+        <span>Price: $500,000</span>
+        <a href="../html/andromeda-expedition.html" class="btn">View Details</a>
+        <button onclick='addToCart({ name: "Andromeda Expedition", price: 500000, image: "Andromeda.jpeg" })'>Add to Cart</button>
+      </div>
+
+      <!-- Alien Planet Visit -->
+      <div class="trip-card">
+        <img src="../img/Venus.jpg" alt="Alien Planet">
+        <h2>Alien Planet Visit</h2>
+        <p>A unique expedition to a newly discovered alien planet.</p>
+        <span>Duration: 14 Days</span>
+        <span>Price: $300,000</span>
+        <a href="../html/align.html" class="btn">View Details</a>
+        <button onclick='addToCart({ name: "Alien Planet Visit", price: 300000, image: "Venus.jpg" })'>Add to Cart</button>
+      </div>
+      
+      <!-- A Stellar Bouquet Visit -->
+      <div class="trip-card">
+        <img src="../img/A Stellar Bouquet Visit.webp" alt="A Stellar Bouquet">
+        <h2>A Stellar Bouquet Visit</h2>
+        <p>A unique expedition to a newly discovered alien planet.</p>
+        <span>Duration: 10 Days</span>
+        <span>Price: $400,000</span>
+        <a href="../html/Stellar.html" class="btn">View Details</a>
+        <button onclick='addToCart({ name: "A Stellar Bouquet Visit", price: 400000, image: "A Stellar Bouquet Visit.webp" })'>Add to Cart</button>
+      </div>
+
+      <!-- helix Visit -->
+      <div class="trip-card">
+        <img src="../img/helix.webp" alt="helix">
+        <h2>helix Visit</h2>
+        <p>A unique expedition to a newly discovered alien planet.</p>
+        <span>Duration: 4 Days</span>
+        <span>Price: $200,000</span>
+        <a href="../html/helix.html" class="btn">View Details</a>
+        <button onclick='addToCart({ name: "helix Visit", price: 200000, image: "helix.webp" })'>Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 GalaxyX. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Cart Script -->
+  <script src="../js/cart.js"></script>
+</body>
+</html>
