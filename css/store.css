@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: 'Orbitron', sans-serif;
 }
 
@@ -149,4 +148,9 @@ nav a:hover {
     box-shadow: 0 0 50px rgba(167, 143, 255, 0.948);
     width: 100%;
     padding: 5px 0;
+}
+
+body::selection {
+    background-color: #ffffff;
+    color: #8000ff;
 }

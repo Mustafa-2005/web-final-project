@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'Orbitron', sans-serif;
     margin: 0;
@@ -166,4 +171,9 @@ footer {
 footer p {
     color: goldenrod;
     font-size: 1rem;
+}
+
+body::selection {
+    background-color: #ffffff;
+    color: #8000ff;
 }

@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: 'Orbitron', sans-serif;
 }
 
@@ -145,4 +144,9 @@ nav a:hover {
     background-color: #111633;
     margin-top: 60px;
     color: #888;
+}
+
+body::selection {
+    background-color: #ffffff;
+    color: #8000ff;
 }

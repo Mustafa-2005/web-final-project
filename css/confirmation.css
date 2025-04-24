@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: 'Orbitron', sans-serif;
 }
 
@@ -168,4 +167,9 @@ body {
     background-color: rgba(0, 0, 0, 0.676);
     color: #ff1493;
     transition: all 0.3s ease;
+}
+
+body::selection {
+    background-color: #ffffff;
+    color: #8000ff;
 }

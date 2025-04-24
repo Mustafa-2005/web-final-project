@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #2e2e2e;
@@ -96,4 +101,13 @@ body {
     width: 100%;
     font-size: 14px;
     color: #2a59f5;
+}
+body::selection {
+    background-color: #ffffff;
+    color: #8000ff;
+}
+
+body::selection {
+    background-color: #ffffff;
+    color: #8000ff;
 }

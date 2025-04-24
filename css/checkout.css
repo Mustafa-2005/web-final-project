@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
@@ -132,4 +131,9 @@ body {
     box-shadow: 0 0 20px #00d9ff;
     transition: 0.3s ease;
     background-color: rgba(0, 0, 0, 0.727);
+}
+
+body::selection {
+    background-color: #ffffff;
+    color: #8000ff;
 }

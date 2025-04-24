@@ -1,8 +1,6 @@
-Reset some default browser styles
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
@@ -196,4 +194,9 @@ body {
     background-color: #1a252f;
     box-shadow: 0 0 8px #ffeae8;
     transition: all 0.3s ease; 
+}
+
+body::selection {
+    background-color: #ffffff;
+    color: #8000ff;
 }

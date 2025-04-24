@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
@@ -105,4 +104,9 @@ body {
     width: 100%;
     font-size: 14px;
     color: #00aeff;
+}
+
+body::selection {
+    background-color: #ffffff;
+    color: #8000ff;
 }

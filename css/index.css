@@ -1,4 +1,7 @@
-/* index.css - Updated UI/UX Style */
+* {
+    margin: 0;
+    padding: 0;
+}
 
 body {
     margin: 0;
@@ -239,4 +242,9 @@ nav a:hover {
     font-size: 1.2rem;
     color: #00bfff;
     text-shadow: 0 0 10px #00bfff;
+}
+
+body::selection {
+    background-color: #ffffff;
+    color: #8000ff;
 }
