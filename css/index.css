@@ -85,20 +85,23 @@ nav a:hover {
 }
 
 .btn {
+    position: relative;
+    left: 2px;
+    bottom: 0;
     display: inline-block;
-    padding: 12px 28px;
+    padding: 8px 20px;
     background: #00bfff;
     color: white;
     border: none;
-    border-radius: 12px;
-    transition: background 0.3s, transform 0.2s;
+    border-radius: 13px;
     font-size: 1rem;
     text-decoration: none;
 }
 
 .btn:hover {
-    background: #66e3ff;
+    background: rgb(170, 113, 255);
     transform: scale(1.05);
+    transition: 0.3s ease;
 }
 
 /* Services */
@@ -109,6 +112,27 @@ nav a:hover {
     backdrop-filter: blur(6px);
 }
 
+.services p {
+    font-size: 1.2rem;
+    margin: 0 auto 2rem;
+    color: rgb(3, 171, 255);
+    text-shadow: 0 0 10px #00bfff;
+}
+
+.services p:hover{
+    color: #00fff7;
+    text-shadow: 0 0 10px #00bfff;
+}
+
+.services h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #00bfff;
+    text-shadow: 0 0 10px #00bfff;
+}
+
+
+
 .services h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
@@ -118,7 +142,7 @@ nav a:hover {
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -133,15 +157,15 @@ nav a:hover {
 }
 
 .card:hover {
-    background-color:rgba(223, 108, 255);
-    box-shadow: 0 0 25px rgb(0, 191, 255);
-    transform: scale(1.05);
-    color: rgb(0, 116, 154);
-}
-
-.card h3:hover {
-    text-shadow: 0 0 10px #fdfdfd;
-    
+        background-color:rgba(223, 108, 255);
+        transform: scale(1.05);
+        transition: 0.3s ease;
+        color: #00ffff;
+        text-shadow: 0 0 10px #ececec;
+        border: 3px solid #00ddff;
+        backdrop-filter: blur(10px);
+        border-radius: 35px;
+        box-shadow: 0 0px 20px rgb(43, 107, 255);
 }
 
 /* Why Us */
