@@ -51,7 +51,7 @@ nav a:hover {
 
 /* control panel section */
 .dashboard-section {
-    padding: 40px;
+    padding: 50px;
     text-align: center;
 }
 
@@ -59,15 +59,15 @@ nav a:hover {
     font-size: 36px;
     margin-bottom: 25px;
     color: #4d4de0;
+    text-shadow: 0 0 10px #0066ff;
 }
 
 /* dashboard panels */
 .dashboard-panels {
+    margin: 100px auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    max-width: 1200px;
-    margin: auto;
 }
 
 .panel {
