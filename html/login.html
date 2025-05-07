@@ -20,16 +20,16 @@
     </nav>
   </header>
 
-  <section class="login-section">
+  <section class="login-section" >
     <h1>Login</h1>
-    <form id="loginForm">
+    <form id="loginForm" method="post" action="../php/login.php">
       <label for="email">Email</label>
       <input type="email" id="email" name="email" required />
 
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required />
 
-      <button type="submit" onclick="login()">Login</button>
+      <button type="submit" >Login</button>
     </form>
   </section>
 
@@ -37,12 +37,6 @@
     <p>© 2025 GalaxyX. All Rights Reserved.</p>
   </footer>
 
-  <script>
-   function login() {
-      window.location.href = "../html/after-login.html";  // بعد تسجيل الدخول يروح للصفحة الرئيسية
-    }
-  </script>
-  <script src="../js/login.js"></script>
 
 </body>
 </html>
