@@ -32,7 +32,7 @@ CREATE TABLE `courses` (
   `course_title` varchar(150) NOT NULL,
   `description` text NOT NULL,
   `duration` int(11) NOT NULL,
-  `course_price` double NOT NULL
+  `course_price` decimal NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -91,8 +91,9 @@ CREATE TABLE `store` (
   `product_id` int(11) NOT NULL,
   `product_name` varchar(150) NOT NULL,
   `categore` varchar(150) NOT NULL,
+  `description` text NOT NULL,
   `in_stock` int(11) NOT NULL,
-  `product_price` double NOT NULL
+  `product_price` decimal NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -108,7 +109,7 @@ CREATE TABLE `trips` (
   `trip_start_data` date NOT NULL,
   `Destination` varchar(150) NOT NULL,
   `capacity` int(11) NOT NULL,
-  `trip_price` double DEFAULT NULL
+  `trip_price` decimal DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
