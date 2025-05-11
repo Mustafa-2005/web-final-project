@@ -6,6 +6,7 @@ $password = '';
 
 try {
     $conn =mysqli_connect($host,$username,$password,$dbname);
-} catch (mysqli_connect_error) {
-    echo "Connection failed:";}
+} catch (mysqli_sql_exception $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
 ?>
