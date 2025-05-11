@@ -7,12 +7,12 @@ $user_id = $_SESSION['user_id'] ?? 1; // fallback for demo
 
 // Handle update request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $full_name = $_POST['name'];
+    $name = $_POST['name'];
     $email = $_POST['email'];
     $address = $_POST['address'];
 
     $stmt = $conn->prepare("UPDATE users SET name=?, email=?, address=?  WHERE user_id=?");
-    $stmt->bind_param("ssssi", $full_name, $email, $address, $user_id);
+    $stmt->bind_param("sssi", $name, $email, $address, $user_id);
     $stmt->execute();
     $stmt->close();
 
