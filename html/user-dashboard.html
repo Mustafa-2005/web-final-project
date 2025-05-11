@@ -8,14 +8,14 @@
   <link rel="icon" href="../img/pls7.png">
 </head>
 <body>
-
+  
   <!-- Header -->
   <header class="header">
     <div class="logo">GALAXYX</div>
     <nav>
       <a href="after-login.html">Home</a>
-      <a href="trips.html">Trips</a>
-      <a href="store.html">Store</a>
+      <a href="../php/trip.php">Trips</a>
+      <a href="../php/store.php">Store</a>
       <a href="cart.html">Cart</a>
       <a href="login.html">Logout</a>
     </nav>
@@ -23,36 +23,28 @@
 
   <!-- User Info Section -->
   <section class="dashboard-section">
-    <h1>Welcome, [User Name]</h1>
+    <h1>Welcome, <span id="user-name">User</span></h1>
 
     <!-- Display user information -->
     <div class="user-info">
-      <p><strong>Full Name:</strong> John Doe</p>
-      <p><strong>Email:</strong> johndoe@example.com</p>
-      <p><strong>Address:</strong> 123 Space Street, Mars City</p>
-      <p><strong>Preferred Payment:</strong> Credit Card</p>
+      <p><strong>Full Name:</strong> <span id="name">Loading...</span></p>
+      <p><strong>Email:</strong> <span id="email">Loading...</span></p>
+      <p><strong>Address:</strong> <span id="address">Loading...</span></p>
     </div>
-
-    <!-- Edit User Info Form -->
     <h2>Update Your Information</h2>
-    <form action="" method="POST" class="update-form">
-      <label for="full-name">Full Name</label>
-      <input type="text" id="full-name" name="full-name" value="John Doe" required />
+    <form action="../php/user-dashboard.php" method="POST" class="update-form">
+      <label for="name">Full Name</label>
+      <input type="text" id="name-input" name="name" required />
 
       <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" value="johndoe@example.com" required />
+      <input type="email" id="email-input" name="email" required />
 
       <label for="address">Shipping Address</label>
-      <textarea id="address" name="address" rows="3" required>123 Space Street, Mars City</textarea>
+      <textarea id="address-input" name="address" rows="3" required></textarea>
 
-      <label for="payment-method">Preferred Payment</label>
-      <select id="payment-method" name="payment-method" required>
-        <option value="card" selected>Credit Card</option>
-        <option value="paypal">PayPal</option>
-        <option value="crypto">Cryptocurrency</option>
-      </select>
 
-      <button type="submit" class="btn" onclick="updateUserInfo()">Update Information</button>
+
+      <button type="submit" class="btn">Update Information</button>
     </form>
   </section>
 
@@ -62,11 +54,19 @@
   </footer>
 
   <script>
-    function updateUserInfo() {
-      alert("User information updated successfully!");
-      window.location.href = "user-dashboard.html";
-    }
-  </script>
+    // Load user data from PHP
+    fetch('../php/user-dashboard.php')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('user-name').textContent = data.name;
+        document.getElementById('name').textContent = data.name;
+        document.getElementById('email').textContent = data.email;
+        document.getElementById('address').textContent = data.address;
 
+        document.getElementById('name-input').value = data.name;
+        document.getElementById('email-input').value = data.email;
+        document.getElementById('address-input').value = data.address;
+      });
+  </script>
 </body>
 </html>
