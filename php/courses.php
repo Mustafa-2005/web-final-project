@@ -66,7 +66,7 @@ $conn->close();
               <h2><?php echo htmlspecialchars($course['course_title']); ?></h2>
               <p><?php echo nl2br(htmlspecialchars($course['description'] ?? 'No description available.')); ?></p>
               
-              <p>Duration: <?php  echo htmlspecialchars($course['duration']); ?> hours/weeks</p>
+              <p>Duration: <?php  echo htmlspecialchars($course['duration']); ?> weeks</p>
               
               <span>$<?php echo number_format((float)$course['course_price'], 2); ?></span>
             </div>

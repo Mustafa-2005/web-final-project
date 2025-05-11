@@ -40,7 +40,7 @@ $conn->close();
       <a href="vr-experience.html">VR</a>
       <a href="courses.php">Courses</a>
       <a href="../html/cart.html">Cart (<span id="cart-count">0</span>)</a>
-      <a href="user-dashboard.html">My Account</a>
+      <a href="../html/user-dashboard.html">My Account</a>
     </nav>
   </header>
 
