@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2025 at 01:26 PM
+-- Generation Time: May 14, 2025 at 11:03 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -60,7 +60,7 @@ CREATE TABLE `orders` (
   `status` enum('arrived','cancelled','processing','') NOT NULL DEFAULT 'processing'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
+------------------------------------------------
 
 --
 -- Table structure for table `order_item`
@@ -71,6 +71,7 @@ CREATE TABLE `order_item` (
   `order_id` int(11) NOT NULL,
   `item_type` enum('product','trip','course') NOT NULL,
   `item_id` int(11) NOT NULL,
+  `item_name` varchar(150) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` decimal(10,0) NOT NULL,
   `total_price` decimal(10,0) NOT NULL
@@ -176,7 +177,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `email`, `address`, `password`, `role`) VALUES
-(1, 'Mustafa fathy', 'mustafa@gmail.com', 'home', '$2y$10$cLm4WviNsTUVfYJzJs/Iu.9YkGzXnR4MzVVQHMdH6dBHUuApW8AGK', 'customer'),
+(1, 'Mustafa fathy wahby', 'mustafa@gmail.com', 'home', '$2y$10$cLm4WviNsTUVfYJzJs/Iu.9YkGzXnR4MzVVQHMdH6dBHUuApW8AGK', 'customer'),
 (2305190, 'mustafa fathy', '2305190@gmail.com', 'home', '$2y$10$U8IGYIQF8uerVw71kjiK4O1he5bvcRBDFO/y6cjSrTXjW0uTHXH8q', 'admin');
 
 --
@@ -194,7 +195,7 @@ ALTER TABLE `courses`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`),
-  ADD UNIQUE KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id`) USING BTREE;
 
 --
 -- Indexes for table `order_item`

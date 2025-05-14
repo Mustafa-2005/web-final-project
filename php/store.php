@@ -51,7 +51,8 @@ $conn->close();
                 "id" => $product['product_id'],
                 "name" => $product['product_name'],
                 "price" => (float)$product['product_price'],
-                "image" => $product['image_name'] ?? ''
+                "image" => $product['image_name'] ?? '',
+                "type" => "product"
               ];
             ?>
             <button onclick='addToCart(<?php echo json_encode($product_data_for_js); ?>)'>Add to Cart</button>

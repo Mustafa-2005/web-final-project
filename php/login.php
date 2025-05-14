@@ -1,5 +1,6 @@
 <?php
-include 'connection.php'; 
+require 'connection.php'; 
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = trim($_POST["email"]);
@@ -28,11 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 header("Location: ../html/after-login.html");
                 exit;
         }}else{
-            header("Location: ../html/login.html");
-        }
+          header("Location: ../html/login.html?error=1");        }
         
     } else {
-        echo "No account found with that email.";
+        header("Location: ../html/login.html?error=1");
     }
 
     $stmt->close();

@@ -1,74 +1,65 @@
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>GalaxyX - Checkout</title>
-    <link rel="stylesheet" href="../css/checkout.css" />
-    <link rel="icon" href="../img/pls6.png">
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GalaxyX - Checkout</title>
+  <link rel="stylesheet" href="../css/checkout.css" />
+  <link rel="icon" href="../img/pls6.png">
+</head>
+<body>
 
-    <!-- Header -->
-    <header class="header">
-      <div class="logo">GALAXYX</div>
-      <nav>
-        <a href="../html/index.html">Home</a>
-        <a href="../html/trips.html">Trips</a>
-        <a href="../html/store.html">Store</a>
-        <a href="../html/vr-experience.html">VR</a>
-        <a href="../html/courses.html">Courses</a>
-        <a href="../html/cart.html">Cart (<span id="cart-count">0</span>)</a>
-      </nav>
-    </header>
+<header class="header">
+  <div class="logo">GALAXYX</div>
+  <nav>
+    <a href="../html/index.html">Home</a>
+    <a href="../html/trips.html">Trips</a>
+    <a href="../php/store.php">Store</a>
+    <a href="../html/vr-experience.html">VR</a>
+    <a href="../php/courses.php">Courses</a>
+    <a href="../html/cart.html">Cart (<span id="cart-count">0</span>)</a>
+  </nav>
+</header>
 
-    <!-- Checkout Form Section -->
-    <section class="checkout-section">
-      <h1>Checkout</h1>
-      <form action="" method="POST" class="checkout-form">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" required>
+<section class="checkout-section">
+  <h1>Checkout</h1>
+  <form action="../php/checkout.php" method="POST" class="checkout-form" id="checkoutForm">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" required>
 
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required>
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" required>
 
-        <label for="address">Shipping Address</label>
-        <textarea id="address" name="address" rows="3" required></textarea>
+    <label for="address">Shipping Address</label>
+    <textarea id="address" name="address" rows="3" required></textarea>
 
-        <label for="payment">Payment Method</label>
-        <select id="payment" name="payment" required>
-          <option value="">Select a payment method</option>
-          <option value="card">Credit/Debit Card</option>
-          <option value="paypal">PayPal</option>
-          <option value="crypto">Cryptocurrency</option>
-        </select>
+    <label for="payment_method">Choose a payment method:</label>
+    <select name="payment_method" id="payment_method" required>
+        <option value="credit_card">Credit Card</option>
+        <option value="paypal">PayPal</option>
+        <option value="bank_transfer">Bank Transfer</option>
+    </select>
 
-        <!-- Button to submit form -->
-        <button type="submit" class="btn" id="go" onclick="conf()" >Place Order</button>
-          <!--& Redirect to confirmation page after form submission 
-                  خلي بالك ده هتعمله في الباك بحيث لما اليوزر يكمل عمليه الدفع 
-                  هتعمله ريديركت على صفحه التاكيد
-          <?php
-        header("Location: ../html/confirmation.html");
-        exit();
-          ?> -->
-          
-      </form>
-    </section>
+    <!-- Hidden input to pass cart data -->
+    <input type="hidden" name="cart_data" id="cartData">
 
-    <!-- Footer -->
-    <footer class="footer">
-      <p>© 2025 GalaxyX. All Rights Reserved.</p>
-    </footer>
+    <button type="submit" class="btn">Place Order</button>
+  </form>
+</section>
 
-    <script>
-      function conf() {
-          alert("Your order has been placed successfully!")
-          window.location.href = "../html/confirmation.html";
-      }
-    </script>
+<footer class="footer">
+  <p>© 2025 GalaxyX. All Rights Reserved.</p>
+</footer>
 
-    <script src="../js/cart.js"></script>
+<script>
+  // Set cart data into hidden input before submitting form
+  document.getElementById("checkoutForm").addEventListener("submit", function(e) {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    document.getElementById("cartData").value = JSON.stringify(cart);
+  });
+</script>
 
-  </body>
-  </html>
+<script src="../js/cart.js"></script>
+
+</body>
+</html>
