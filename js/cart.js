@@ -74,7 +74,7 @@ function getCartDetails() {
 // Initial setup when page loads
 document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();
-
+    
   // If it's the cart page, display cart details
   if (window.location.pathname.includes("cart.html")) {
     getCartDetails();
