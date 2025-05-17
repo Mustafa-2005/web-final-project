@@ -32,7 +32,7 @@ $conn->close();
     <div class="logo">GALAXYX</div>
     <nav>
       <a href="../html/after-login.html">Home</a>
-      <a href="trips.php">Trips</a> 
+      <a href="trip.php">Trips</a> 
       <a href="store.php">Store</a> 
       <a href="vr-experience.html">VR</a>
       <a href="<?php echo basename($_SERVER['PHP_SELF']); ?>">Courses</a>

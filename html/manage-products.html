@@ -30,47 +30,45 @@
                 <tr>
                     <th>Product Name</th>
                     <th>Category</th>
+                    <th>Description</th>
                     <th>Price</th>
                     <th>Stock</th>
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody>
-                <!-- Example Product -->
-                <tr>
-                    <td>Space Helmet</td>
-                    <td>Accessories</td>
-                    <td>$500</td>
-                    <td>200</td>
-                    <td>
-                        <button class="btn edit-btn">Edit</button>
-                        <button class="btn delete-btn">Delete</button>
-                    </td>
-                </tr>
-                <!-- Add more products here -->
+            <tbody id="products-list">
+                <!-- Products will be loaded here dynamically -->
             </tbody>
         </table>
     </section>
 
-    <!-- example for Adding Product -->
-    <div class="modal" id="add-product-modal">
+    <!-- Modal for Adding/Editing Product -->
+    <div class="modal" id="product-modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Add New Product</h2>
-            <form class="modal-form">
-                <label for="product-name">Product Name</label>
+            <h2 id="modal-title">Add New Product</h2>
+            <form id="product-form" class="modal-form">
+                <input type="hidden" id="product-id">
+                
+                <label for="product-name">Product Name:</label>
                 <input type="text" id="product-name" required>
 
-                <label for="category">Category</label>
+                <label for="category">Category:</label>
                 <input type="text" id="category" required>
 
-                <label for="price">Price</label>
-                <input type="number" id="price" required>
+                <label for="description">Description:</label>
+                <textarea id="description" required></textarea>
 
-                <label for="stock">Stock</label>
-                <input type="number" id="stock" required>
+                <label for="product-price">Price ($):</label>
+                <input type="number" id="product-price" step="0.01" required>
 
-                <button type="submit">Add Product</button>
+                <label for="in-stock">Stock Quantity:</label>
+                <input type="number" id="in-stock" required>
+
+                <label for="image">Product Image:</label>
+                <input type="file" id="image" accept="image/*">
+
+                <button type="submit" id="submit-btn">Add Product</button>
             </form>
         </div>
     </div>
@@ -80,23 +78,142 @@
     </footer>
 
     <script>
-        var modal = document.getElementById("add-product-modal");
-        var addProductBtn = document.querySelector(".add-product-btn");
-        var closeBtn = document.querySelector(".close");
+        // DOM Elements
+        const modal = document.getElementById('product-modal');
+        const addProductBtn = document.querySelector('.add-product-btn');
+        const closeBtn = document.querySelector('.close');
+        const productForm = document.getElementById('product-form');
+        const modalTitle = document.getElementById('modal-title');
+        const submitBtn = document.getElementById('submit-btn');
+        const productsList = document.getElementById('products-list');
 
-        addProductBtn.onclick = function() {
-            modal.style.display = "block";
-        }
+        // Event Listeners
+        addProductBtn.onclick = () => {
+            modalTitle.textContent = 'Add New Product';
+            submitBtn.textContent = 'Add Product';
+            productForm.reset();
+            modal.style.display = 'block';
+        };
 
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-        }
+        closeBtn.onclick = () => modal.style.display = 'none';
 
-        window.onclick = function(event) {
+        window.onclick = (event) => {
             if (event.target == modal) {
-                modal.style.display = "none";
+                modal.style.display = 'none';
+            }
+        };
+
+        // Load Products
+        function loadProducts() {
+            fetch('../php/manage-products.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        productsList.innerHTML = data.data.map(product => `
+                            <tr>
+                                <td>${product.product_name}</td>
+                                <td>${product.categore}</td>
+                                <td>${product.description.substring(0, 50)}...</td>
+                                <td>$${parseFloat(product.product_price).toFixed(2)}</td>
+                                <td>${product.in_stock}</td>
+                                <td>
+                                    <button class="btn edit-btn" onclick="editProduct(${product.product_id})">Edit</button>
+                                    <button class="btn delete-btn" onclick="deleteProduct(${product.product_id})">Delete</button>
+                                </td>
+                            </tr>
+                        `).join('');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Edit Product
+        function editProduct(productId) {
+            fetch(`../php/manage-products.php?product_id=${productId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success' && data.data) {
+                        const product = data.data;
+                        document.getElementById('product-id').value = product.product_id;
+                        document.getElementById('product-name').value = product.product_name;
+                        document.getElementById('category').value = product.categore;
+                        document.getElementById('description').value = product.description;
+                        document.getElementById('product-price').value = product.product_price;
+                        document.getElementById('in-stock').value = product.in_stock;
+                        
+                        modalTitle.textContent = 'Edit Product';
+                        submitBtn.textContent = 'Update Product';
+                        modal.style.display = 'block';
+                    } else {
+                        alert('Failed to load product details');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error loading product details');
+                });
+        }
+
+        // Delete Product
+        function deleteProduct(productId) {
+            if (confirm('Are you sure you want to delete this product?')) {
+                const formData = new FormData();
+                formData.append('action', 'delete');
+                formData.append('product_id', productId);
+
+                fetch('../php/manage-products.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        loadProducts();
+                    }
+                    alert(data.message);
+                })
+                .catch(error => console.error('Error:', error));
             }
         }
+
+        // Handle Form Submit
+        productForm.onsubmit = (e) => {
+            e.preventDefault();
+            const formData = new FormData();
+            const productId = document.getElementById('product-id').value;
+            
+            formData.append('action', productId ? 'update' : 'add');
+            if (productId) formData.append('product_id', productId);
+            
+            formData.append('product_name', document.getElementById('product-name').value);
+            formData.append('categore', document.getElementById('category').value);
+            formData.append('description', document.getElementById('description').value);
+            formData.append('product_price', document.getElementById('product-price').value);
+            formData.append('in_stock', document.getElementById('in-stock').value);
+
+            const imageFile = document.getElementById('image').files[0];
+            if (imageFile) {
+                formData.append('image', imageFile);
+            }
+
+            fetch('../php/manage-products.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    modal.style.display = 'none';
+                    productForm.reset();
+                    loadProducts();
+                }
+                alert(data.message);
+            })
+            .catch(error => console.error('Error:', error));
+        };
+
+        // Load products when page loads
+        document.addEventListener('DOMContentLoaded', loadProducts);
     </script>
 
 </body>

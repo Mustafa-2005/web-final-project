@@ -35,42 +35,45 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody>
-                <!-- Example Trip -->
-                <tr>
-                    <td>Moon Tour</td>
-                    <td>Moon</td>
-                    <td>$1000</td>
-                    <td>3 Days</td>
-                    <td>
-                        <button class="btn edit-btn">Edit</button>
-                        <button class="btn delete-btn">Delete</button>
-                    </td>
-                </tr>
-                <!-- Add more trips here -->
+            <tbody id="trips-list">
+                <!-- Trips will be loaded here dynamically -->
             </tbody>
         </table>
     </section>
 
-    <!-- example for Adding Trip -->
-    <div class="modal" id="add-trip-modal">
+    <!-- Modal for Add/Edit Trip -->
+    <div id="trip-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Add New Space Trip</h2>
-            <form class="modal-form">
-                <label for="trip-name">Trip Name</label>
-                <input type="text" id="trip-name" required>
+            <h2 id="modal-title">Add New Trip</h2>
+            <form id="trip-form" class="modal-form">
+                <input type="hidden" id="trip-id" name="trip_id">
+                
+                <label for="trip-name">Trip Name:</label>
+                <input type="text" id="trip-name" name="trip_name" required>
 
-                <label for="destination">Destination</label>
-                <input type="text" id="destination" required>
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required></textarea>
 
-                <label for="price">Price</label>
-                <input type="number" id="price" required>
+                <label for="destination">Destination:</label>
+                <input type="text" id="destination" name="destination" required>
 
-                <label for="duration">Duration</label>
-                <input type="text" id="duration" required>
+                <label for="duration">Duration (Days):</label>
+                <input type="number" id="duration" name="duration" required>
 
-                <button type="submit">Add Trip</button>
+                <label for="capacity">Capacity:</label>
+                <input type="number" id="capacity" name="capacity" required>
+
+                <label for="trip-price">Price ($):</label>
+                <input type="number" id="trip-price" name="trip_price" step="0.01" required>
+
+                <label for="trip-start-data">Start Date:</label>
+                <input type="date" id="trip-start-data" name="trip_start_data" required>
+
+                <label for="image">Trip Image:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+
+                <button type="submit" id="submit-btn">Add Trip</button>
             </form>
         </div>
     </div>
@@ -80,23 +83,134 @@
     </footer>
 
     <script>
-        var modal = document.getElementById("add-trip-modal");
-        var addTripBtn = document.querySelector(".add-trip-btn");
-        var closeBtn = document.querySelector(".close");
+        // DOM Elements
+        const modal = document.getElementById('trip-modal');
+        const addTripBtn = document.querySelector('.add-trip-btn');
+        const closeBtn = document.querySelector('.close');
+        const tripForm = document.getElementById('trip-form');
+        const modalTitle = document.getElementById('modal-title');
+        const submitBtn = document.getElementById('submit-btn');
+        const tripsList = document.getElementById('trips-list');
 
-        addTripBtn.onclick = function() {
-            modal.style.display = "block";
-        }
+        // Event Listeners
+        addTripBtn.onclick = () => {
+            modalTitle.textContent = 'Add New Trip';
+            submitBtn.textContent = 'Add Trip';
+            tripForm.reset();
+            modal.style.display = 'block';
+        };
 
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-        }
+        closeBtn.onclick = () => modal.style.display = 'none';
 
-        window.onclick = function(event) {
+        window.onclick = (event) => {
             if (event.target == modal) {
-                modal.style.display = "none";
+                modal.style.display = 'none';
+            }
+        };
+
+        // Load trips list
+        function loadTrips() {
+            fetch('../php/manage-trips.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        tripsList.innerHTML = data.data.map(trip => `
+                            <tr>
+                                <td>${trip.trip_name || ''}</td>
+                                <td>${trip.Destination || ''}</td>
+                                <td>$${parseFloat(trip.trip_price || 0).toFixed(2)}</td>
+                                <td>${trip.duration || 0} Days</td>
+                                <td>
+                                    <button class="btn edit-btn" onclick="editTrip(${trip.trip_id})">Edit</button>
+                                    <button class="btn delete-btn" onclick="deleteTrip(${trip.trip_id})">Delete</button>
+                                </td>
+                            </tr>
+                        `).join('');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error loading trips');
+                });
+        }
+
+        // Edit Trip
+        function editTrip(tripId) {
+            fetch(`../php/manage-trips.php?trip_id=${tripId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success' && data.data) {
+                        const trip = data.data;
+                        document.getElementById('trip-id').value = trip.trip_id;
+                        document.getElementById('trip-name').value = trip.trip_name;
+                        document.getElementById('description').value = trip.description;
+                        document.getElementById('destination').value = trip.Destination;
+                        document.getElementById('duration').value = trip.duration;
+                        document.getElementById('capacity').value = trip.capacity;
+                        document.getElementById('trip-price').value = trip.trip_price;
+                        document.getElementById('trip-start-data').value = trip.trip_start_data;
+                        
+                        modalTitle.textContent = 'Edit Trip';
+                        submitBtn.textContent = 'Update Trip';
+                        modal.style.display = 'block';
+                    } else {
+                        alert('Failed to load trip details');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error loading trip details');
+                });
+        }
+
+        // Delete Trip
+        function deleteTrip(tripId) {
+            if (confirm('Are you sure you want to delete this trip?')) {
+                const formData = new FormData();
+                formData.append('action', 'delete');
+                formData.append('trip_id', tripId);
+
+                fetch('../php/manage-trips.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        loadTrips();
+                    }
+                    alert(data.message);
+                })
+                .catch(error => console.error('Error:', error));
             }
         }
+
+        // Handle Form Submit
+        tripForm.onsubmit = (e) => {
+            e.preventDefault();
+            const formData = new FormData(tripForm);
+            const tripId = document.getElementById('trip-id').value;
+            
+            formData.append('action', tripId ? 'update' : 'add');
+
+            fetch('../php/manage-trips.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    modal.style.display = 'none';
+                    tripForm.reset();
+                    loadTrips();
+                }
+                alert(data.message);
+            })
+            .catch(error => console.error('Error:', error));
+        };
+
+        // Load trips when page loads
+        document.addEventListener('DOMContentLoaded', loadTrips);
     </script>
 
 </body>

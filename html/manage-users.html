@@ -23,7 +23,7 @@
 
   <!-- Dashboard Section -->
   <section class="dashboard-section">
-    <h1>Welcome, [Admin Name]</h1>
+    <h1>Welcome</h1>
 
     <!-- Add User Button -->
     <button class="btn add-user-btn" id="addUserBtn">Add User</button>
@@ -40,40 +40,36 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Example User -->
-        <tr>
-          <td>Ahmed Ali</td>
-          <td>ahmed@example.com</td>
-          <td>User</td>
-          <td>
-            <button class="btn edit-btn">Edit</button>
-            <button class="btn delete-btn">Delete</button>
-          </td>
-        </tr>
+        <!-- Users will be loaded here dynamically -->
       </tbody>
     </table>
 
-    <!-- Modal for Add User -->
+    <!-- Modal for Add/Edit User -->
     <div id="addUserModal" class="modal">
       <div class="modal-content">
         <span class="close" id="closeAddUserModal">&times;</span>
-        <h2>Add New User</h2>
-        <form action="add-user.php" method="POST" class="modal-form">
-          <label for="username">Name:</label>
-          <input type="text" id="username" name="username" required>
+        <h2 id="modalTitle">Add New User</h2>
+        <form class="modal-form" id="userForm">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
 
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" required>
 
           <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required>
+          <input type="password" id="password" name="password">
+          <small id="passwordHint" style="display: none; color: #888;">Leave empty to keep current password</small>
+
+          <label for="address">Address:</label>
+          <input type="text" id="address" name="address" required>
 
           <label for="role">Role:</label>
           <select id="role" name="role" required>
-            <option value="user">User</option>
+            <option value="customer">Customer</option>
             <option value="admin">Admin</option>
           </select>
 
+          <div id="formMessage" class="message"></div>
           <button type="submit" class="btn">Add User</button>
         </form>
       </div>
@@ -86,27 +82,208 @@
   </footer>
 
   <script>
-    // Get modal element
+    // Get modal elements
     const addUserModal = document.getElementById('addUserModal');
     const addUserBtn = document.getElementById('addUserBtn');
     const closeAddUserModal = document.getElementById('closeAddUserModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const userForm = document.getElementById('userForm');
+    const passwordInput = document.getElementById('password');
+    const passwordHint = document.getElementById('passwordHint');
+    const formMessage = document.getElementById('formMessage');
 
     // Open modal when button is clicked
     addUserBtn.onclick = function() {
+        resetForm();
+        modalTitle.textContent = 'Add New User';
+        passwordInput.required = true;
+        passwordHint.style.display = 'none';
+        userForm.querySelector('button').textContent = 'Add User';
         addUserModal.style.display = "block";
     }
 
     // Close modal when 'X' is clicked
     closeAddUserModal.onclick = function() {
         addUserModal.style.display = "none";
+        resetForm();
     }
 
     // Close modal if clicked outside of the modal content
     window.onclick = function(event) {
         if (event.target === addUserModal) {
             addUserModal.style.display = "none";
+            resetForm();
         }
     }
+
+    // Reset form
+    function resetForm() {
+        userForm.reset();
+        delete userForm.dataset.userId;
+        formMessage.textContent = '';
+        formMessage.className = 'message';
+    }
+
+    // Show message
+    function showMessage(message, isError = false) {
+        formMessage.textContent = message;
+        formMessage.className = 'message ' + (isError ? 'error' : 'success');
+    }
+
+    // Load users list
+    function loadUsers() {
+      fetch('../php/manage-users.php')
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            const tbody = document.querySelector('.users-table tbody');
+            tbody.innerHTML = '';
+            
+            data.data.forEach(user => {
+              const tr = document.createElement('tr');
+              tr.innerHTML = `
+                <td>${user.name}</td>
+                <td>${user.email}</td>
+                <td>${user.role}</td>
+                <td>
+                  <button class="btn edit-btn" onclick="editUser(${user.user_id})">Edit</button>
+                  <button class="btn delete-btn" onclick="deleteUser(${user.user_id})">Delete</button>
+                </td>
+              `;
+              tbody.appendChild(tr);
+            });
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          showMessage('Error loading users list', true);
+        });
+    }
+
+    // Edit user function
+    function editUser(userId) {
+      fetch(`../php/manage-users.php?user_id=${userId}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            const user = data.data;
+            
+            // Fill form with user data
+            document.getElementById('name').value = user.name;
+            document.getElementById('email').value = user.email;
+            document.getElementById('address').value = user.address;
+            document.getElementById('role').value = user.role;
+            
+            // Change form for edit mode
+            modalTitle.textContent = 'Edit User';
+            passwordInput.required = false;
+            passwordHint.style.display = 'block';
+            userForm.dataset.userId = userId;
+            userForm.querySelector('button').textContent = 'Update User';
+            
+            // Show modal
+            addUserModal.style.display = "block";
+          } else {
+            showMessage(data.message || 'Error loading user data', true);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          showMessage('Error loading user data', true);
+        });
+    }
+
+    // Handle form submission (both add and edit)
+    userForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const userId = this.dataset.userId;
+      
+      formData.append('action', userId ? 'update' : 'add');
+      if (userId) {
+        formData.append('user_id', userId);
+      }
+
+      // Remove empty password for updates
+      if (userId && !formData.get('password')) {
+        formData.delete('password');
+      }
+
+      fetch('../php/manage-users.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          addUserModal.style.display = "none";
+          loadUsers();
+          resetForm();
+          showMessage(data.message);
+        } else {
+          showMessage(data.message, true);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        showMessage('An error occurred while saving', true);
+      });
+    });
+
+    // Delete user
+    function deleteUser(userId) {
+      if (confirm('هل أنت متأكد من حذف هذا المستخدم؟')) {
+        const formData = new FormData();
+        formData.append('action', 'delete');
+        formData.append('user_id', userId);
+
+        fetch('../php/manage-users.php', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            loadUsers();
+            showMessage(data.message);
+          } else {
+            showMessage(data.message, true);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          showMessage('Error deleting user', true);
+        });
+      }
+    }
+
+    // Add CSS for messages
+    const style = document.createElement('style');
+    style.textContent = `
+      .message {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        display: none;
+      }
+      .message:not(:empty) {
+        display: block;
+      }
+      .message.error {
+        background-color: #ffebee;
+        color: #c62828;
+        border: 1px solid #ffcdd2;
+      }
+      .message.success {
+        background-color: #e8f5e9;
+        color: #2e7d32;
+        border: 1px solid #c8e6c9;
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Load users when page loads
+    document.addEventListener('DOMContentLoaded', loadUsers);
   </script>
 
 </body>

@@ -9,41 +9,45 @@
 </head>
 
 <body>
-
   <!-- Header -->
   <header class="header">
     <div class="logo">GALAXYX - ADMIN</div>
     <nav>
-      <a href="login.html">Logout</a>
+      <a href="#" id="logout-btn">Logout</a>
     </nav>
   </header>
 
   <!-- Admin Dashboard Section -->
   <section class="dashboard-section">
     <h1>Admin Control Panel</h1>
+
+
+
+    
+
     <div class="dashboard-panels">
-      
-      <a href="manage-users.html" class="panel" target="_blank">
+      <a href="manage-users.html" class="panel">
         <h2>Manage Users</h2>
         <p>Add, Edit, or Delete Users</p>
       </a>
 
-      <a href="manage-trips.html" class="panel" target="_blank">
+      <a href="manage-trips.html" class="panel">
         <h2>Manage Trips</h2>
         <p>Create, Edit, or Remove Space Trips</p>
       </a>
 
-      <a href="manage-products.html" class="panel" target="_blank">
+      <a href="manage-products.html" class="panel">
         <h2>Manage Products</h2>
         <p>Control Store Inventory</p>
       </a>
 
-      <a href="manage-courses.html" class="panel" target="_blank">
+      <a href="manage-courses.html" class="panel">
         <h2>Manage Courses</h2>
         <p>Edit, Add, or Renew Training Courses</p>
       </a>
-   
     </div>
+
+
   </section>
 
   <!-- Footer -->
@@ -51,5 +55,19 @@
     <p>© 2025 GalaxyX Admin. All Rights Reserved.</p>
   </footer>
 
+  <script>
+// Handle logout
+    document.getElementById('logout-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      fetch('../php/logout.php')
+        .then(() => {
+          window.location.href = 'login.html';
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    });
+
+  </script>
 </body>
 </html>
