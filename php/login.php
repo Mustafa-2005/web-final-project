@@ -29,11 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 header("Location: ../html/after-login.html");
                 exit;
         }}else{
-          header("Location: ../html/login.html?error=1");        }
+         echo "<script>alert('Incorrect email or password. Please try again.');window.history.back();</script>"; 
+         exit;       
+    }
         
     } else {
-        header("Location: ../html/login.html?error=1");
-    }
+         echo "<script>alert('Incorrect email or password. Please try again.');window.history.back();</script>";        
+        }
+    
 
     $stmt->close();
     $conn->close();
