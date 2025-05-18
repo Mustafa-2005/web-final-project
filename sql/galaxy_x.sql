@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2025 at 11:03 PM
+-- Generation Time: May 18, 2025 at 04:12 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -60,7 +60,7 @@ CREATE TABLE `orders` (
   `status` enum('arrived','cancelled','processing','') NOT NULL DEFAULT 'processing'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-------------------------------------------------
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `order_item`
@@ -178,7 +178,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `name`, `email`, `address`, `password`, `role`) VALUES
 (1, 'Mustafa fathy wahby', 'mustafa@gmail.com', 'home', '$2y$10$cLm4WviNsTUVfYJzJs/Iu.9YkGzXnR4MzVVQHMdH6dBHUuApW8AGK', 'customer'),
-(2305190, 'mustafa fathy', '2305190@gmail.com', 'home', '$2y$10$U8IGYIQF8uerVw71kjiK4O1he5bvcRBDFO/y6cjSrTXjW0uTHXH8q', 'admin');
+(2305190, 'mustafa fathy', '2305190@gmail.com', 'home', '$2y$10$U8IGYIQF8uerVw71kjiK4O1he5bvcRBDFO/y6cjSrTXjW0uTHXH8q', 'admin'),
+(2305197, 'Mahmoud Mansour', 'mahmoudmansour552015@gmail.com', 'Edko', '$2y$12$VMuoWsrwoa3pHsRoYqEn5Ow8QOEFFGFBpQ7viMThA7fzjp1Of7Y/u', 'admin'),
+(2305198, 'Mustafa fathy', 'mu029968@gmail.com', 'home', '$2y$10$0ykm5RcqKC/DJ6lFU3d0SulJFoa58MO0XnDd0IW6zCy6sx1wOTxCq', 'customer'),
+(2305201, 'abdo', '2305152@gmail.com', 'home', '$2y$10$fNuwUQiBpFOoZ1noGV1/SuRiMz559.iUIattP64S7FzqJfcGab64.', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -209,8 +212,8 @@ ALTER TABLE `order_item`
 --
 ALTER TABLE `payments`
   ADD PRIMARY KEY (`payment_id`),
-  ADD KEY `order_id` (`order_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `payments_ibfk_1` (`order_id`);
 
 --
 -- Indexes for table `store`
@@ -300,6 +303,3 @@ ALTER TABLE `payments`
   ADD CONSTRAINT `payments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `orders` (`user_id`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
